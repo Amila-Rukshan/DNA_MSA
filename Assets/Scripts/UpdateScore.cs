@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UpdateScore : MonoBehaviour {
-    
+
+    public GameObject levelLoader;
+
+    public GameObject levelCompletedScreen;
+
     private static int par= 12;
 	// Use this for initialization
 	void Awake () {
@@ -15,7 +19,7 @@ public class UpdateScore : MonoBehaviour {
     private static int level = 1;
 
     // Update is called once per frame
-    void UpdateScoreBoard () {
+    public void UpdateScoreBoard () {
         GetComponent<Text>().color = new Color(0.9254f, 0.7176f, 0.1647f, 1);//giving yellow collor to the score label
         switch (level)
         {
@@ -33,6 +37,8 @@ public class UpdateScore : MonoBehaviour {
                     //BuildAncestorAndScore.buildAncestor();
                     level = 2;
                     par = 15;
+                    levelLoader.SetActive(true);
+                    //BuildAncestorAndScore.buildAncestor();
                 }
                 break;
             case 2:
@@ -59,7 +65,7 @@ public class UpdateScore : MonoBehaviour {
                         }
                         
                     }
-
+                    levelLoader.SetActive(true);
                     //BuildAncestorAndScore.buildAncestor();
                 }
                 break;
@@ -82,6 +88,7 @@ public class UpdateScore : MonoBehaviour {
                     //BuildAncestorAndScore.buildAncestor();
                     level = 4;
                     par = 30;
+                    levelLoader.SetActive(true);
                 }
                 
                 break;
@@ -89,7 +96,9 @@ public class UpdateScore : MonoBehaviour {
                 if (BuildAncestorAndScore.score2 >= par)
                 {
                     GetComponent<Text>().color = new Color(0, 1, 0, 1);
+                    levelCompletedScreen.SetActive(true);
                 }
+                
                 break;
             default:
                 //print("Incorrect intelligence level.");

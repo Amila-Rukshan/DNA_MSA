@@ -37,6 +37,7 @@ public class BuildAncestorAndScore : MonoBehaviour
 
     public static bool isShown;
 
+
     public void showAnces_1() {
        
         showAncestor(generatedSeqs["A(1,2)"]);
