@@ -44,7 +44,7 @@ public class AddSprites : MonoBehaviour {
                 newImage.sprite = puzzles[0];
                 L.Add(newImage);
                 blocks.Add(newImage);
-                newImage.transform.localPosition = new Vector3(-652 + 152 * i, startY, 0);
+                newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);
                 newImage.transform.SetParent(panel2, false);
             }
             else if (seq[i] == "B")
@@ -55,7 +55,7 @@ public class AddSprites : MonoBehaviour {
                 newImage.sprite = puzzles[4];
                 L.Add(newImage);
                 blocks.Add(newImage);
-                newImage.transform.localPosition = new Vector3(-652 + 152 * i, startY, 0);
+                newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);
                 newImage.transform.SetParent(panel2, false);
             }
             else if (seq[i] == "C")
@@ -66,7 +66,7 @@ public class AddSprites : MonoBehaviour {
                 newImage.sprite = puzzles[2];
                 L.Add(newImage);
                 blocks.Add(newImage);
-                newImage.transform.localPosition = new Vector3(-652 + 152 * i, startY, 0);
+                newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);
                 newImage.transform.SetParent(panel2, false);
             }
             else if (seq[i] == "D")
@@ -77,7 +77,7 @@ public class AddSprites : MonoBehaviour {
                 newImage.sprite = puzzles[7];
                 L.Add(newImage);
                 blocks.Add(newImage);
-                newImage.transform.localPosition = new Vector3(-652 + 152 * i, startY, 0);
+                newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);
                 newImage.transform.SetParent(panel2, false);
             }
             

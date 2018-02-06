@@ -471,9 +471,9 @@ public class BuildAncestorAndScore : MonoBehaviour
         //instead of below line check whether the sequence is in generatedSeqs
         if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
         {
-            List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "B", "S", "C", "D", "S", "S", "D", "B", "C", "A" }, -652, 304, 1);
+            List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "B", "S", "C", "D", "S", "S", "D",  "B", "S", "C",  "A" }, -1250, 304, 1);
             BuildAncestorAndScore.generatedSeqs.Add("1", firstSeq);
-            List<Image>  secondSeq = new AddSprites().GenerateSequence(new string[] { "B", "A", "S", "C", "D", "S", "D", "B", "C", "A" }, -652, 152, 2);
+            List<Image>  secondSeq = new AddSprites().GenerateSequence(new string[] { "B", "A",  "C", "S", "D", "S", "D", "B",  "C", "A" }, -1250, 152, 2);
             BuildAncestorAndScore.generatedSeqs.Add("2", secondSeq);
             BuildAncestorAndScore.generateAncesSeq(firstSeq, secondSeq, "A(1,2)");
             List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);

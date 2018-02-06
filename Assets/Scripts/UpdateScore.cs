@@ -31,7 +31,7 @@ public class UpdateScore : MonoBehaviour {
                     GetComponentsInChildren<Image>()[5].color = new Color(255, 255, 255, 255);
                    
 
-                    List<Image> nextSeq = new AddSprites().GenerateSequence(new string[] { "A", "S", "A", "S", "B", "D", "S", "S", "B", "C", "D", "A" }, -652, 0, 3);
+                    List<Image> nextSeq = new AddSprites().GenerateSequence(new string[] { "A", "A", "S", "S", "B", "D", "S", "B", "C", "D", "A" }, -1250, 0, 3);
                     BuildAncestorAndScore.generatedSeqs.Add("3", nextSeq);
                     BuildAncestorAndScore.generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(1,2)"],BuildAncestorAndScore.generatedSeqs["3"], "A(A12,3)");
                     //BuildAncestorAndScore.buildAncestor();
@@ -47,9 +47,9 @@ public class UpdateScore : MonoBehaviour {
                     GetComponent<Text>().color = new Color(0, 1, 0, 1);
                     GetComponentsInChildren<Image>()[2].color = new Color(255, 255, 255, 255);  //tree branches image
                     GetComponentsInChildren<Image>()[6].color = new Color(255, 255, 255, 255);  // middle button
-                    List<Image> nextSeq1 = new AddSprites().GenerateSequence(new string[] { "B", "S", "D", "A", "B", "C", "B","S", "A", "C" }, -652, -152, 4);
+                    List<Image> nextSeq1 = new AddSprites().GenerateSequence(new string[] { "B", "D", "S", "S", "A", "B", "C", "B","S", "A", "S", "S", "S", "C" }, -1250, -152, 4);
                     BuildAncestorAndScore.generatedSeqs.Add("4", nextSeq1);
-                    List<Image> nextSeq2 = new AddSprites().GenerateSequence(new string[] { "B", "S", "D", "A", "C", "B", "S", "S", "B", "D" }, -652, -304, 5);
+                    List<Image> nextSeq2 = new AddSprites().GenerateSequence(new string[] { "B", "S", "D", "A", "C", "S", "B", "S",  "B", "D" }, -1250, -304, 5);
                     BuildAncestorAndScore.generatedSeqs.Add("5", nextSeq2);
                     BuildAncestorAndScore.generateAncesSeq(nextSeq1, nextSeq2, "A(4,5)");
                     //BuildAncestorAndScore.buildAncestor();
@@ -87,7 +87,7 @@ public class UpdateScore : MonoBehaviour {
                     }
                     //BuildAncestorAndScore.buildAncestor();
                     level = 4;
-                    par = 30;
+                    par = 32;
                     levelLoader.SetActive(true);
                 }
                 
