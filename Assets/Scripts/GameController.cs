@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
 
-	// Use this for initialization
+    // Use this for initialization
+    void Awake() {
+       // DontDestroyOnLoad(this);
+    }
 	void Start () {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Debug.Log("2");
-        BuildAncestorAndScore.buildAncestor();
+        //BuildAncestorAndScore.buildAncestor();
         //BuildAncestorAndScore.showAncestor();
     }
 	

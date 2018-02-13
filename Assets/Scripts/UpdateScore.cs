@@ -16,13 +16,18 @@ public class UpdateScore : MonoBehaviour {
             
     }
 
-    private static int level = 1;
+    private static int level = 0;
 
     // Update is called once per frame
     public void UpdateScoreBoard () {
         GetComponent<Text>().color = new Color(0.9254f, 0.7176f, 0.1647f, 1);//giving yellow collor to the score label
         switch (level)
         {
+            case 0:
+                GetComponentsInChildren<Image>()[0].color = new Color(255, 255, 255, 255);
+                GetComponentsInChildren<Image>()[4].color = new Color(255, 255, 255, 255);
+                level = 1;
+                break;
             case 1:
                 if (BuildAncestorAndScore.score2 >= par)
                 {

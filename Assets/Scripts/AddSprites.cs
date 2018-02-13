@@ -23,14 +23,20 @@ public class AddSprites : MonoBehaviour {
 
     private static string[] tags =new string[]{ "A","B","C","D","E","F","G","H"};
 
-	void Awake(){
-        prefab2 = prefab;
-        panel2 = panel;
-        puzzles = Resources.LoadAll<Sprite> ("Sprites/blocks");
+    public string selection = "blocks_1";
 
-
+    public void SetSelection(string selection)
+    {
+        puzzles = Resources.LoadAll<Sprite>("Sprites/" + selection);
+        BuildAncestorAndScore.buildAncestor();
     }
 
+    void Awake(){
+        prefab2 = prefab;
+        panel2 = panel;
+        //puzzles = Resources.LoadAll<Sprite>("Sprites/" + selection);
+    }
+    //0427 1356
     public List<Image> GenerateSequence(string[] seq,int startX, int startY, int seqN) {
 
         List <Image> L = new List<Image>();
@@ -52,7 +58,7 @@ public class AddSprites : MonoBehaviour {
                 Image newImage = Instantiate(prefab2);
                 newImage.name = "DNA " + seqN + " " + i;
                 newImage.tag = tags[1];
-                newImage.sprite = puzzles[4];
+                newImage.sprite = puzzles[1];
                 L.Add(newImage);
                 blocks.Add(newImage);
                 newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);
@@ -74,7 +80,7 @@ public class AddSprites : MonoBehaviour {
                 Image newImage = Instantiate(prefab2);
                 newImage.name = "DNA " + seqN + " " + i;
                 newImage.tag = tags[3];
-                newImage.sprite = puzzles[7];
+                newImage.sprite = puzzles[3];
                 L.Add(newImage);
                 blocks.Add(newImage);
                 newImage.transform.localPosition = new Vector3(startX + 152 * i, startY, 0);

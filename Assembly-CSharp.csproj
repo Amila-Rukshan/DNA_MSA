@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Database Control Free\Demos\C#\Scripts\DCF_DemoScene_ManagerScript_CSharp.cs" />
      <Compile Include="Assets\Scripts\AddSprites.cs" />
      <Compile Include="Assets\Scripts\BuildAncestorAndScore.cs" />
      <Compile Include="Assets\Scripts\CollisionTester.cs" />
@@ -59,13 +60,20 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GoNext.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\showAncestor.cs" />
      <Compile Include="Assets\Scripts\UpdateExtends.cs" />
      <Compile Include="Assets\Scripts\UpdateGaps.cs" />
      <Compile Include="Assets\Scripts\UpdateMatches.cs" />
      <Compile Include="Assets\Scripts\UpdateMismatches.cs" />
      <Compile Include="Assets\Scripts\UpdateScore.cs" />
+     <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
+     <None Include="Assets\Editor Default Resources\Database Control Free\DCF_EditorData.txt" />
+     <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
      <None Include="Assets\Resources\Shaders\blur.shader" />
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>D:/Projects/unity/Draggable/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Games/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -129,11 +137,23 @@
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>D:/Games/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions">
+ <HintPath>D:/Games/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.WebGL.Extensions">
  <HintPath>D:/Games/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
- <HintPath>D:/Games/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ <HintPath>D:/Games/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Facebook.Extensions">
+ <HintPath>D:/Games/Editor/Data/PlaybackEngines/Facebook/UnityEditor.Facebook.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="DatabaseControl">
+ <HintPath>D:/Projects/unity/Draggable/Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
+ </Reference>
+ <Reference Include="DatabaseControlEditor">
+ <HintPath>D:/Projects/unity/Draggable/Assets/Database Control Free/Scripts/Editor/DatabaseControlEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/ARS/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
