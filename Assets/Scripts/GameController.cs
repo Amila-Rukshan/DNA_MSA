@@ -21,6 +21,12 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Quit()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
 
 

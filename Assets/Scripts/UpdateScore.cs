@@ -9,7 +9,7 @@ public class UpdateScore : MonoBehaviour {
 
     public GameObject levelCompletedScreen;
 
-    private static int par= 12;
+    private static int par= 30;
 	// Use this for initialization
 	void Awake () {
 		BuildAncestorAndScore.changescore += UpdateScoreBoard;
@@ -26,6 +26,8 @@ public class UpdateScore : MonoBehaviour {
             case 0:
                 GetComponentsInChildren<Image>()[0].color = new Color(255, 255, 255, 255);
                 GetComponentsInChildren<Image>()[4].color = new Color(255, 255, 255, 255);
+                GetComponentsInChildren<Image>()[8].color = new Color(255, 255, 255, 255);
+                GetComponentsInChildren<Image>()[9].color = new Color(255, 255, 255, 255);
                 level = 1;
                 break;
             case 1:
@@ -34,16 +36,19 @@ public class UpdateScore : MonoBehaviour {
                     GetComponent<Text>().color = new Color(0, 1, 0, 1);
                     GetComponentsInChildren<Image>()[1].color = new Color(255, 255, 255, 255);
                     GetComponentsInChildren<Image>()[5].color = new Color(255, 255, 255, 255);
+                    GetComponentsInChildren<Image>()[10].color = new Color(255, 255, 255, 255);
                    
 
-                    List<Image> nextSeq = new AddSprites().GenerateSequence(new string[] { "A", "A", "S", "S", "B", "D", "S", "B", "C", "D", "A" }, -1250, 0, 3);
+                    List<Image> nextSeq = new AddSprites().GenerateSequence(new string[] { "S","C", "B",  "B", "B", "C", "B", "C",  "C", "C","C","S","C","A","A","C","A" }, -1858, 0, 3);
                     BuildAncestorAndScore.generatedSeqs.Add("3", nextSeq);
                     BuildAncestorAndScore.generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(1,2)"],BuildAncestorAndScore.generatedSeqs["3"], "A(A12,3)");
                     //BuildAncestorAndScore.buildAncestor();
                     level = 2;
-                    par = 15;
+                    par = 52;
                     levelLoader.SetActive(true);
                     //BuildAncestorAndScore.buildAncestor();
+                    
+                    
                 }
                 break;
             case 2:
@@ -52,14 +57,16 @@ public class UpdateScore : MonoBehaviour {
                     GetComponent<Text>().color = new Color(0, 1, 0, 1);
                     GetComponentsInChildren<Image>()[2].color = new Color(255, 255, 255, 255);  //tree branches image
                     GetComponentsInChildren<Image>()[6].color = new Color(255, 255, 255, 255);  // middle button
-                    List<Image> nextSeq1 = new AddSprites().GenerateSequence(new string[] { "B", "D", "S", "S", "A", "B", "C", "B","S", "A", "S", "S", "S", "C" }, -1250, -152, 4);
+                    GetComponentsInChildren<Image>()[11].color = new Color(255, 255, 255, 255);
+                    GetComponentsInChildren<Image>()[12].color = new Color(255, 255, 255, 255);
+                    List<Image> nextSeq1 = new AddSprites().GenerateSequence(new string[] { "A", "B", "B", "A", "B", "B", "B", "C","S", "D", "C", "C", "C", "C","B","D","A","C","C","A" }, -1858, -152, 4);
                     BuildAncestorAndScore.generatedSeqs.Add("4", nextSeq1);
-                    List<Image> nextSeq2 = new AddSprites().GenerateSequence(new string[] { "B", "S", "D", "A", "C", "S", "B", "S",  "B", "D" }, -1250, -304, 5);
-                    BuildAncestorAndScore.generatedSeqs.Add("5", nextSeq2);
+                    List<Image> nextSeq2 = new AddSprites().GenerateSequence(new string[] { "B", "B", "B", "C", "A", "S","B", "B", "C",  "C", "B","B","S","C","C","C","A","A","C","A","D","A" }, -1858, -304, 5);
+                    BuildAncestorAndScore.generatedSeqs.Add("5", nextSeq2);//BBBCABBCCBBCCCAACADA
                     BuildAncestorAndScore.generateAncesSeq(nextSeq1, nextSeq2, "A(4,5)");
                     //BuildAncestorAndScore.buildAncestor();
                     level = 3;
-                    par = 7;
+                    par = 11;
 
                     //GetComponentsInChildren<Button>()[0].interactable = false;
                     //GetComponentsInChildren<Button>()[1].interactable = false;
@@ -92,7 +99,7 @@ public class UpdateScore : MonoBehaviour {
                     }
                     //BuildAncestorAndScore.buildAncestor();
                     level = 4;
-                    par = 32;
+                    par = 76;
                     levelLoader.SetActive(true);
                 }
                 
@@ -102,6 +109,7 @@ public class UpdateScore : MonoBehaviour {
                 {
                     GetComponent<Text>().color = new Color(0, 1, 0, 1);
                     levelCompletedScreen.SetActive(true);
+                    
                 }
                 
                 break;

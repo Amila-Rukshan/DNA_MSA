@@ -17,6 +17,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     //private float v;
 
     void Start() {
+   
         blocks = AddSprites.blocks;
     }
 	
@@ -39,6 +40,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		//this.transform.position = pos;
         
 		rigid = GetComponent<Rigidbody2D>();
+
 		rigid.velocity = new Vector3(Input.mousePosition.x - this.transform.position.x, 0,0).normalized * 500;
         
 

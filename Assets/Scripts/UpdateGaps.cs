@@ -9,7 +9,7 @@ public class UpdateGaps : MonoBehaviour
 
     // Use this for initialization
     void Awake()
-    {
+    {   
         //Debug.Log("1");
         BuildAncestorAndScore.changescore += UpdateScoreBoard;
 

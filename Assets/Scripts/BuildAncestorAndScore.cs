@@ -110,8 +110,21 @@ public class BuildAncestorAndScore : MonoBehaviour
                             if (second == first)
                             {
                                 if (firstSeq[i].tag != secondSeq[j].tag)
-                                {
-                                    mismatches++;
+                                {   
+                                    if((firstSeq[i].tag=="A")&(secondSeq[j].tag=="C")){
+                                        mismatches+=1;
+                                    }else if((firstSeq[i].tag=="A")&(secondSeq[j].tag=="C")){
+                                        mismatches+=1;
+                                    }else if((firstSeq[i].tag=="C")&(secondSeq[j].tag=="A")){
+                                        mismatches+=1;
+                                    }else if((firstSeq[i].tag=="B")&(secondSeq[j].tag=="D")){
+                                        mismatches+=1;
+                                    }else if((firstSeq[i].tag=="D")&(secondSeq[j].tag=="B")){
+                                        mismatches+=1;
+                                    }else{
+                                        mismatches+=2;
+                                    }
+                                    
                                 }
 
                             }
@@ -200,12 +213,17 @@ public class BuildAncestorAndScore : MonoBehaviour
         List<int> XPositionsOfFirst = new List<int>();
         List<int> XPositionsOfSecond = new List<int>();
 
+        //if one of the input sequences is an ancestor then,
+        List<Image> copyOfFirst = new List<Image>();//this is to remove any issue caused by invisible puzzzles in ancestor sequence
+        List<Image> copyOfSecond = new List<Image>();//this is to remove any issue caused by invisible puzzzles in ancestor sequence
+
         BubbleSort(firstSeq);
         BubbleSort(secondSeq);
-
+      
         for (int z = 0; z < firstSeq.Count; z++){
             if (firstSeq[z].color.a == 255 | firstSeq[z].color.a == 1) {
                 XPositionsOfFirst.Add(Mathf.RoundToInt(firstSeq[z].transform.localPosition.x));
+                copyOfFirst.Add(firstSeq[z]);
             }
         }
 
@@ -213,16 +231,17 @@ public class BuildAncestorAndScore : MonoBehaviour
             if (secondSeq[w].color.a == 255 | secondSeq[w].color.a == 1)
             {
                 XPositionsOfSecond.Add(Mathf.RoundToInt(secondSeq[w].transform.localPosition.x));
+                copyOfSecond.Add(secondSeq[w]);
             }
         }
 
         int gaps = 0;
         int extends = 0;
         //counting gaps in first seq
-        for (int i = 1; i < firstSeq.Count; i++) {
-            if ((firstSeq[i].color.a == 255 | firstSeq[i].color.a == 1) & (firstSeq[i - 1].color.a == 255 | firstSeq[i - 1].color.a == 1))
-            {
-                int ConsecGaps = (Mathf.RoundToInt(firstSeq[i].transform.localPosition.x) - Mathf.RoundToInt(firstSeq[i - 1].transform.localPosition.x)) / 152;
+        for (int i = 1; i < copyOfFirst.Count; i++) {
+          // if ((firstSeq[i].color.a == 255 | firstSeq[i].color.a == 1) & (firstSeq[i - 1].color.a == 255 | firstSeq[i - 1].color.a == 1))
+           // {
+                int ConsecGaps = (Mathf.RoundToInt(copyOfFirst[i].transform.localPosition.x) - Mathf.RoundToInt(copyOfFirst[i - 1].transform.localPosition.x)) / 152;
                 ConsecGaps--;
                 if (ConsecGaps > 0)
                 {
@@ -230,7 +249,7 @@ public class BuildAncestorAndScore : MonoBehaviour
                     for (int k = 1; k <= spaces; k++)
                     {
                         // Debug.Log((Mathf.RoundToInt(firstSeq[i - 1].transform.localPosition.x) + k * 152));
-                        if (!XPositionsOfSecond.Contains(Mathf.RoundToInt(firstSeq[i - 1].transform.localPosition.x) + k * 152))
+                        if (!XPositionsOfSecond.Contains(Mathf.RoundToInt(copyOfFirst[i - 1].transform.localPosition.x) + k * 152))
                         {
                             ConsecGaps--;
                         }
@@ -243,22 +262,22 @@ public class BuildAncestorAndScore : MonoBehaviour
                         //Debug.Log(ConsecGaps);
                     }
                 }
-            }
+           // }
         }
 
         //counting gaps in second seq
-          for (int i = 1; i < secondSeq.Count; i++)
+          for (int i = 1; i < copyOfSecond.Count; i++)
          {
-            if ((secondSeq[i].color.a == 255 | secondSeq[i].color.a == 1) & (secondSeq[i - 1].color.a == 255 | secondSeq[i - 1].color.a == 1))
-            {
-                int ConsecGaps = (Mathf.RoundToInt(secondSeq[i].transform.localPosition.x) - Mathf.RoundToInt(secondSeq[i - 1].transform.localPosition.x)) / 152;
+           // if ((secondSeq[i].color.a == 255 | secondSeq[i].color.a == 1) & (secondSeq[i - 1].color.a == 255 | secondSeq[i - 1].color.a == 1))
+            //{
+                int ConsecGaps = (Mathf.RoundToInt(copyOfSecond[i].transform.localPosition.x) - Mathf.RoundToInt(copyOfSecond[i - 1].transform.localPosition.x)) / 152;
                 ConsecGaps--;
                 if (ConsecGaps > 0)
                 {
                     int spaces = ConsecGaps;
                     for (int k = 1; k <= spaces; k++)
                     {
-                        if (!XPositionsOfFirst.Contains(Mathf.RoundToInt(secondSeq[i - 1].transform.localPosition.x) + k * 152))
+                        if (!XPositionsOfFirst.Contains(Mathf.RoundToInt(copyOfSecond[i - 1].transform.localPosition.x) + k * 152))
                         {
                             ConsecGaps--;
                         }
@@ -270,7 +289,7 @@ public class BuildAncestorAndScore : MonoBehaviour
                         //Debug.Log(ConsecGaps);
                     }
                 }
-            }
+            //}
          }
         List<int> gapsAndExtends = new List<int>();
 
@@ -311,7 +330,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             {
                 Image img = Instantiate(firstSeq[i]);
                 //Debug.Log(img.name);
-                img.transform.localPosition = new Vector2(img.transform.localPosition.x, -608);
+                img.transform.localPosition = new Vector2(img.transform.localPosition.x, -550);
                 ancestorSeq.Add(img);
                 //img.color = new Color(255, 255, 255, 255);
                 img.GetComponent<Collider2D>().enabled = false;
@@ -323,7 +342,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             {
                 Image img = Instantiate(secondSeq[i]);
                 //Debug.Log(img.name);
-                img.transform.localPosition = new Vector2(img.transform.localPosition.x, -608);
+                img.transform.localPosition = new Vector2(img.transform.localPosition.x, -550);
                 ancestorSeq.Add(img);
                 //img.color = new Color(255, 255, 255, 255);
                 img.GetComponent<Collider2D>().enabled = false;
@@ -471,9 +490,9 @@ public class BuildAncestorAndScore : MonoBehaviour
         //instead of below line check whether the sequence is in generatedSeqs
         if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
         {
-            List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "B", "S", "C", "D", "S", "S", "D",  "B", "S", "C",  "A" }, -1250, 304, 1);
+            List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A","S", "B", "B", "B", "C", "B", "C", "S", "B", "D", "C","C","A","A","C","A" }, -1858, 304, 1);//ABBBCBCBDCCAACA
             BuildAncestorAndScore.generatedSeqs.Add("1", firstSeq);
-            List<Image>  secondSeq = new AddSprites().GenerateSequence(new string[] { "B", "A",  "C", "S", "D", "S", "D", "B",  "C", "A" }, -1250, 152, 2);
+            List<Image>  secondSeq = new AddSprites().GenerateSequence(new string[] { "A", "B",  "B", "B", "C", "S", "B", "C",  "B", "D","C","C","A","A","C","A" }, -1858, 152, 2);//CBBBCBCCCCCAACA
             BuildAncestorAndScore.generatedSeqs.Add("2", secondSeq);
             BuildAncestorAndScore.generateAncesSeq(firstSeq, secondSeq, "A(1,2)");
             List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
@@ -481,7 +500,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             mismatches2 += fullScoreArr[1];
             gaps2 += fullScoreArr[2];
             extends2 += fullScoreArr[3];
-            Debug.Log("1 & 2 "+ matches2);
+            //Debug.Log("1 & 2 "+ matches2);
         }
         else {
             generateAncesSeq(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], "A(1,2)");
@@ -490,7 +509,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             mismatches2 += fullScoreArr[1];
             gaps2 += fullScoreArr[2];
             extends2 += fullScoreArr[3];
-            Debug.Log("1 & 2 " + matches2);
+            //Debug.Log("1 & 2 " + matches2);
         }
 
 
@@ -503,7 +522,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             mismatches2 += fullScoreArr[1];
             gaps2 += fullScoreArr[2];
             extends2 += fullScoreArr[3];
-            Debug.Log("12 & 3 " + matches2);
+            //Debug.Log("12 & 3 " + matches2);
         }
 
          if (generatedSeqs.ContainsKey("4") & generatedSeqs.ContainsKey("5"))
@@ -514,7 +533,7 @@ public class BuildAncestorAndScore : MonoBehaviour
             mismatches2 += fullScoreArr[1];
             gaps2 += fullScoreArr[2];
             extends2 += fullScoreArr[3];
-            Debug.Log("4 & 5 " + matches2);
+           // Debug.Log("4 & 5 " + matches2);
         }
 
 
@@ -527,7 +546,7 @@ public class BuildAncestorAndScore : MonoBehaviour
               mismatches2 += fullScoreArr[1];
               gaps2 += fullScoreArr[2];
               extends2 += fullScoreArr[3];
-              Debug.Log("45 & 12 3 " + matches2+  " generatedSeqs.ContainsKey(\"A(A12, 3)\") " + generatedSeqs.ContainsKey("A(A12,3)"));
+              //Debug.Log("45 & 12 3 " + matches2+  " generatedSeqs.ContainsKey(\"A(A12, 3)\") " + generatedSeqs.ContainsKey("A(A12,3)"));
         }
           
 

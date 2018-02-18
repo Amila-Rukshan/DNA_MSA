@@ -53,20 +53,26 @@
   <ItemGroup>
      <Compile Include="Assets\Database Control Free\Demos\C#\Scripts\DCF_DemoScene_ManagerScript_CSharp.cs" />
      <Compile Include="Assets\Scripts\AddSprites.cs" />
+     <Compile Include="Assets\Scripts\BuilAncestorAndScoreL2.cs" />
      <Compile Include="Assets\Scripts\BuildAncestorAndScore.cs" />
      <Compile Include="Assets\Scripts\CollisionTester.cs" />
      <Compile Include="Assets\Scripts\Drag.cs" />
      <Compile Include="Assets\Scripts\Draggable.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GetUserLevel.cs" />
      <Compile Include="Assets\Scripts\GoNext.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
+     <Compile Include="Assets\Scripts\SceneTransfer.cs" />
+     <Compile Include="Assets\Scripts\SetUserLevel.cs" />
      <Compile Include="Assets\Scripts\showAncestor.cs" />
      <Compile Include="Assets\Scripts\UpdateExtends.cs" />
      <Compile Include="Assets\Scripts\UpdateGaps.cs" />
      <Compile Include="Assets\Scripts\UpdateMatches.cs" />
      <Compile Include="Assets\Scripts\UpdateMismatches.cs" />
      <Compile Include="Assets\Scripts\UpdateScore.cs" />
+     <Compile Include="Assets\Scripts\UpdateScoreL2.cs" />
+     <Compile Include="Assets\Scripts\UserData.cs" />
      <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
      <None Include="Assets\Editor Default Resources\Database Control Free\DCF_EditorData.txt" />
      <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
