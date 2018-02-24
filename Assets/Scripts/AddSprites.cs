@@ -28,7 +28,7 @@ public class AddSprites : MonoBehaviour {
     public void SetSelection(string selection)
     {
         puzzles = Resources.LoadAll<Sprite>("Sprites/" + selection);
-        BuildAncestorAndScore.buildAncestor();
+        //BuildAncestorAndScore.buildAncestor();
     }
 
     void Awake(){
@@ -37,6 +37,10 @@ public class AddSprites : MonoBehaviour {
         //puzzles = Resources.LoadAll<Sprite>("Sprites/" + selection);
     }
     //0427 1356
+
+    public static void setPanel(Transform panel) {
+        panel2 = panel;
+    }
     public List<Image> GenerateSequence(string[] seq,int startX, int startY, int seqN) {
 
         List <Image> L = new List<Image>();

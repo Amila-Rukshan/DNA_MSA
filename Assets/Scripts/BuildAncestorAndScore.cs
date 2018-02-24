@@ -10,7 +10,7 @@ public class BuildAncestorAndScore : MonoBehaviour
     [SerializeField]
     private Transform panel2;
 
-    private static Transform panel;
+    public static Transform panel;
 
     public delegate void changeScore();
 
@@ -34,8 +34,9 @@ public class BuildAncestorAndScore : MonoBehaviour
 
     public static bool ran;
 
-
     public static bool isShown;
+
+    public static int level = 1;
 
 
     public void showAnces_1() {
@@ -51,7 +52,6 @@ public class BuildAncestorAndScore : MonoBehaviour
 
     public void showAnces_3()
     {
-
         showAncestor(generatedSeqs["A(4,5)"]);
     }
 
@@ -60,6 +60,10 @@ public class BuildAncestorAndScore : MonoBehaviour
         showAncestor(generatedSeqs["A(A(A12,3),A(4,5))"]);
     }
 
+    public void L2showAnces_3()
+    {
+        showAncestor(generatedSeqs["A(A(A12,3),4)"]);
+    }
     void Awake()
     {
         panel = panel2;
@@ -487,80 +491,140 @@ public class BuildAncestorAndScore : MonoBehaviour
         extends2 = 0;
         gaps2 = 0;
 
-        //instead of below line check whether the sequence is in generatedSeqs
-        if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
-        {
-            List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A","S", "B", "B", "B", "C", "B", "C", "S", "B", "D", "C","C","A","A","C","A" }, -1858, 304, 1);//ABBBCBCBDCCAACA
-            BuildAncestorAndScore.generatedSeqs.Add("1", firstSeq);
-            List<Image>  secondSeq = new AddSprites().GenerateSequence(new string[] { "A", "B",  "B", "B", "C", "S", "B", "C",  "B", "D","C","C","A","A","C","A" }, -1858, 152, 2);//CBBBCBCCCCCAACA
-            BuildAncestorAndScore.generatedSeqs.Add("2", secondSeq);
-            BuildAncestorAndScore.generateAncesSeq(firstSeq, secondSeq, "A(1,2)");
-            List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
-            matches2 += fullScoreArr[0];
-            mismatches2 += fullScoreArr[1];
-            gaps2 += fullScoreArr[2];
-            extends2 += fullScoreArr[3];
-            //Debug.Log("1 & 2 "+ matches2);
+        switch (level) {
+            case 1:
+                //instead of below line check whether the sequence is in generatedSeqs
+                if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
+                {
+                    List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "S", "B", "B", "B", "C", "B", "C", "S", "B", "D", "C", "C", "A", "A", "C", "A" }, -1858, 304, 1);//ABBBCBCBDCCAACA
+                    BuildAncestorAndScore.generatedSeqs.Add("1", firstSeq);
+                    List<Image> secondSeq = new AddSprites().GenerateSequence(new string[] { "A", "B", "B", "B", "C", "S", "B", "C", "B", "D", "C", "C", "A", "A", "C", "A" }, -1858, 152, 2);//CBBBCBCCCCCAACA
+                    BuildAncestorAndScore.generatedSeqs.Add("2", secondSeq);
+                    BuildAncestorAndScore.generateAncesSeq(firstSeq, secondSeq, "A(1,2)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("1 & 2 "+ matches2);
+                }
+                else
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], "A(1,2)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("1 & 2 " + matches2);
+                }
+
+
+
+                if (generatedSeqs.ContainsKey("A(1,2)") & generatedSeqs.ContainsKey("3"))
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], "A(A12,3)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], BuildAncestorAndScore.generatedSeqs["A(A12,3)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("12 & 3 " + matches2);
+                }
+
+                if (generatedSeqs.ContainsKey("4") & generatedSeqs.ContainsKey("5"))
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["4"], BuildAncestorAndScore.generatedSeqs["5"], "A(4,5)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["4"], BuildAncestorAndScore.generatedSeqs["5"], BuildAncestorAndScore.generatedSeqs["A(4,5)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    // Debug.Log("4 & 5 " + matches2);
+                }
+
+
+
+                if (generatedSeqs.ContainsKey("A(A(A12,3),A(4,5))"))
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["A(4,5)"], "A(A(A12,3),A(4,5))");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(4,5)"], BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["A(A(A12,3),A(4,5))"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("45 & 12 3 " + matches2+  " generatedSeqs.ContainsKey(\"A(A12, 3)\") " + generatedSeqs.ContainsKey("A(A12,3)"));
+                }
+
+
+
+                score2 = matches2 - mismatches2 + gaps2 * (-4) + extends2 * (-1);
+                if (changescore != null)
+                {
+                    changescore();
+                }
+                break;
+            case 2:
+                Debug.Log("Level 02");
+
+                if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
+                {
+                    List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "S", "B", "B", "B", "C", "B", "C", "S", "B", "D", "C", "C", "A", "A", "C", "A" }, -1858, 304, 1);//ABBBCBCBDCCAACA
+                    BuildAncestorAndScore.generatedSeqs.Add("1", firstSeq);
+                    List<Image> secondSeq = new AddSprites().GenerateSequence(new string[] { "A", "B", "B", "B", "C", "S", "B", "C", "B", "D", "C", "C", "A", "A", "C", "A" }, -1858, 152, 2);//CBBBCBCCCCCAACA
+                    BuildAncestorAndScore.generatedSeqs.Add("2", secondSeq);
+                    BuildAncestorAndScore.generateAncesSeq(firstSeq, secondSeq, "A(1,2)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("1 & 2 "+ matches2);
+                }
+                else
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], "A(1,2)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("1 & 2 " + matches2);
+                }
+
+                if (generatedSeqs.ContainsKey("A(1,2)") & generatedSeqs.ContainsKey("3"))
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], "A(A12,3)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], BuildAncestorAndScore.generatedSeqs["A(A12,3)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("12 & 3 " + matches2);
+                }
+
+                if (generatedSeqs.ContainsKey("A(A12,3)") & generatedSeqs.ContainsKey("4"))
+                {
+                    generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["4"], "A(A(A12,3),4)");
+                    List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["4"], BuildAncestorAndScore.generatedSeqs["A(A(A12,3),4)"]);
+                    matches2 += fullScoreArr[0];
+                    mismatches2 += fullScoreArr[1];
+                    gaps2 += fullScoreArr[2];
+                    extends2 += fullScoreArr[3];
+                    //Debug.Log("12 & 3 " + matches2);
+                }
+
+                score2 = matches2 - mismatches2 + gaps2 * (-4) + extends2 * (-1);
+                if (changescore != null)
+                {
+                    changescore();
+                }
+                break;
+            default:
+                Debug.Log("In default");
+                break;
         }
-        else {
-            generateAncesSeq(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], "A(1,2)");
-            List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["1"], BuildAncestorAndScore.generatedSeqs["2"], BuildAncestorAndScore.generatedSeqs["A(1,2)"]);
-            matches2 += fullScoreArr[0];
-            mismatches2 += fullScoreArr[1];
-            gaps2 += fullScoreArr[2];
-            extends2 += fullScoreArr[3];
-            //Debug.Log("1 & 2 " + matches2);
-        }
-
-
-       
-        if (generatedSeqs.ContainsKey("A(1,2)") & generatedSeqs.ContainsKey("3"))
-        {   
-            generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], "A(A12,3)");
-            List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(1,2)"], BuildAncestorAndScore.generatedSeqs["3"], BuildAncestorAndScore.generatedSeqs["A(A12,3)"]);
-            matches2 += fullScoreArr[0];
-            mismatches2 += fullScoreArr[1];
-            gaps2 += fullScoreArr[2];
-            extends2 += fullScoreArr[3];
-            //Debug.Log("12 & 3 " + matches2);
-        }
-
-         if (generatedSeqs.ContainsKey("4") & generatedSeqs.ContainsKey("5"))
-        {
-            generateAncesSeq(BuildAncestorAndScore.generatedSeqs["4"], BuildAncestorAndScore.generatedSeqs["5"], "A(4,5)");
-            List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["4"], BuildAncestorAndScore.generatedSeqs["5"], BuildAncestorAndScore.generatedSeqs["A(4,5)"]);
-            matches2 += fullScoreArr[0];
-            mismatches2 += fullScoreArr[1];
-            gaps2 += fullScoreArr[2];
-            extends2 += fullScoreArr[3];
-           // Debug.Log("4 & 5 " + matches2);
-        }
-
-
-        
-          if (generatedSeqs.ContainsKey("A(A(A12,3),A(4,5))"))
-          {
-              generateAncesSeq(BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["A(4,5)"], "A(A(A12,3),A(4,5))");
-              List<int> fullScoreArr = CalScore(BuildAncestorAndScore.generatedSeqs["A(4,5)"], BuildAncestorAndScore.generatedSeqs["A(A12,3)"], BuildAncestorAndScore.generatedSeqs["A(A(A12,3),A(4,5))"]);
-              matches2 += fullScoreArr[0];
-              mismatches2 += fullScoreArr[1];
-              gaps2 += fullScoreArr[2];
-              extends2 += fullScoreArr[3];
-              //Debug.Log("45 & 12 3 " + matches2+  " generatedSeqs.ContainsKey(\"A(A12, 3)\") " + generatedSeqs.ContainsKey("A(A12,3)"));
-        }
-          
-
-
-        score2 = matches2 - mismatches2 + gaps2 * (-4) + extends2 * (-1);
-        if (changescore != null)
-        {
-            changescore();
-        }
-        //Debug.Log(ancestorSeq.Count);
-
-
-        //Debug.Log("done");
-        //showAncestor();
+    
     }
 
     public static void DisableSequence(string key) {

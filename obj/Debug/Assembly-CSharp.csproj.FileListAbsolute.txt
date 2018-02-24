@@ -67,3 +67,10 @@ D:\Projects\unity\Draggable\obj\Debug\Assembly-CSharp.csprojResolveAssemblyRefer
 D:\Projects\unity\Draggable\obj\Debug\Assembly-CSharp.dll
 D:\Projects\unity\Draggable\obj\Debug\Assembly-CSharp.pdb
 D:\Projects\unity\Draggable\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\DatabaseControl.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\DatabaseControlEditor.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\Facebook.Unity.Settings.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\UnityEditor.Facebook.Extensions.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\UnityEditor.iOS.Extensions.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\UnityEditor.iOS.Extensions.Common.dll
+D:\Projects\unity\Draggable\Temp\bin\Debug\Mono.Posix.dll

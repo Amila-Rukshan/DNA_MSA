@@ -111,7 +111,7 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
             ResetAllUIElements();
             loadingParent.gameObject.SetActive(false);
             loggedInParent.gameObject.SetActive(true);
-            LoggedIn_DisplayUsernameText.text = "Logged In As: " + playerUsername;
+            LoggedIn_DisplayUsernameText.text = playerUsername;
         } else
         {
             //Something went wrong logging in. Stop showing 'Loading...' and go back to RegisterUI
@@ -124,7 +124,7 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
             } else
             {
                 //There was another error. This error message should never appear, but is here just in case.
-                Login_ErrorText.text = "Error: Unknown Error. Please try again later.";
+                Login_ErrorText.text = "Error: Unknown Error. Check network connectivity.";
             }
         }
     }
