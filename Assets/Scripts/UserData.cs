@@ -8,7 +8,9 @@ public static class UserData {
 
 	private static string password;
 
-	public static void SetUsername(string name){
+    private static int currentLevel;
+
+    public static void SetUsername(string name){
 		username = name;
 	}
 
@@ -16,7 +18,17 @@ public static class UserData {
 		password = pass;
 	}
 
-	public static string GetUsername(){
+    public static void SetLevel(int level)
+    {
+        currentLevel = level;
+    }
+
+    public static int GetLevel()
+    {
+        return currentLevel;
+    }
+
+    public static string GetUsername(){
 		return username;
 	}
 

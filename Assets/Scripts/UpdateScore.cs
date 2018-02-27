@@ -9,7 +9,13 @@ public class UpdateScore : MonoBehaviour {
 
     public ScrollRect gamePanel;
 
-    public Transform panelL2;
+    public RectTransform panelL2;
+
+    public RectTransform panelL1;
+
+    public GameObject copy_panelL2;
+
+    public GameObject copy_panelL1;
 
     public GameObject levelCompletedScreen;
 
@@ -19,7 +25,7 @@ public class UpdateScore : MonoBehaviour {
 		BuildAncestorAndScore.changescore += UpdateScoreBoard;
             
     }
-    private static int level = 1;
+    public static int level = 1;
     private static int stage = 0;
 
     // Update is called once per frame
@@ -105,7 +111,7 @@ public class UpdateScore : MonoBehaviour {
                                 }
 
                             }
-                            //BuildAncestorAndScore.buildAncestor();
+                            
                             stage = 4;
                             par = 76;
                             levelLoader.SetActive(true);
@@ -145,8 +151,14 @@ public class UpdateScore : MonoBehaviour {
                             }
                         }
 
-                        AddSprites.setPanel(panelL2);
-                        BuildAncestorAndScore.panel = panelL2;
+                        AddSprites.setPanel(panelL2.transform);
+                        BuildAncestorAndScore.panel = panelL2.transform;
+                        copy_panelL1.SetActive(false);
+                        copy_panelL2.SetActive(true);
+
+                        gamePanel.content = panelL2;
+                      
+
                         //gamePanel.content = panelL2;
 
                         BuildAncestorAndScore.disabledSeqs = new Dictionary<string, List<float>>();

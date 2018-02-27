@@ -39,9 +39,10 @@ public class GetUserLevel  : MonoBehaviour {
         else
         {
             //The player's data was retrieved. Goes back to loggedIn UI and displays the retrieved data in the InputField
-           
+                
 				levelText.text = response;
-				Debug.Log("got data");
+                UserData.SetLevel(int.Parse(response));
+                Debug.Log("got datasf");
             
         }
     }

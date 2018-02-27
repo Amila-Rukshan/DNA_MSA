@@ -566,7 +566,7 @@ public class BuildAncestorAndScore : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Level 02");
-
+                changescore();//just to run the update score function for level 2
                 if (!generatedSeqs.ContainsKey("1") | !generatedSeqs.ContainsKey("2"))
                 {
                     List<Image> firstSeq = new AddSprites().GenerateSequence(new string[] { "A", "S", "B", "B", "B", "C", "B", "C", "S", "B", "D", "C", "C", "A", "A", "C", "A" }, -1858, 304, 1);//ABBBCBCBDCCAACA

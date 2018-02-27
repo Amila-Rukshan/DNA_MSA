@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	void Start () {
+    public GameObject level;
+
+	void Awake () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        BuildAncestorAndScore.level = UserData.GetLevel();
+        UpdateScore.level = UserData.GetLevel();
+        UpdateLevel.setLevel(UserData.GetLevel());
     }
 
     public void StartBuildOfSeqs() {
