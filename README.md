@@ -1,3 +1,6 @@
+This is made with Unity. c# scripts is the language used to write the game logic. 
+Clone this project to your desktop. After open in Unity 3D. 
+
 
 # Human Computing Game for solving multiple sequence alignment of biological sequences
 
