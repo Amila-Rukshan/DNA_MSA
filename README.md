@@ -1,7 +1,7 @@
 
 # Human Computing Game for solving multiple sequence alignment of biological sequences
 
-Download .apk and install on your Android device. link: 
+Download .apk and install on your Android device. link: https://drive.google.com/file/d/1kUtF3CtktC8egv7CieqSOf2lVh6j-P-c/view?usp=sharing
 
 It needs higher computing capabilities to align multiple sequences of DNA. But this can be easily done through crowdsourcing. One way is by the development of human-computing games, which allows players to align those sequences under a given evaluating criteria. Sometimes human’s visual intuition can outperform alignments done by heuristics algorithms.
 
@@ -13,7 +13,9 @@ Following are some snapshots of the game.
 # Starting screen of the game. 
 ![screenshot_2018-02-28-19-21-36](https://user-images.githubusercontent.com/22471342/36793679-05ce3d4c-1cc4-11e8-8f5a-492ca9d9dc00.jpg)
 
+
 # Login/Register menu
+
 
 # Main menu after a successful authentication
 
