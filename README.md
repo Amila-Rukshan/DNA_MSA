@@ -1,5 +1,5 @@
 
-## Human Computing Game for solving multiple sequence alignment of biological sequences
+# Human Computing Game for solving multiple sequence alignment of biological sequences
 
 Download .apk and install on your Android device. link: 
 
@@ -9,5 +9,16 @@ In this project the main task is to build such a game so that it can align multi
 
 Following are some snapshots of the game.
 
+
+# Starting screen of the game. 
 ![screenshot_2018-02-28-19-21-36](https://user-images.githubusercontent.com/22471342/36793679-05ce3d4c-1cc4-11e8-8f5a-492ca9d9dc00.jpg)
 
+# Login/Register menu
+
+# Main menu after a successful authentication
+
+# Player is prompted to select one of the puzzle sets. This is just for improving the user expirience.
+
+# Sanpshot while playing the game
+
+# Level completed screen
