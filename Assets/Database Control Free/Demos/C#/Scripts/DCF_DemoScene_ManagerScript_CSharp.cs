@@ -72,7 +72,7 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
             ResetAllUIElements();
             loadingParent.gameObject.SetActive(false);
             loggedInParent.gameObject.SetActive(true);
-            LoggedIn_DisplayUsernameText.text = "Logged In As: " + playerUsername;
+            LoggedIn_DisplayUsernameText.text = playerUsername;
         } else
         {
             //Something went wrong logging in. Stop showing 'Loading...' and go back to LoginUI
@@ -98,7 +98,7 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
     }
     IEnumerator RegisterUser()
     {
-        IEnumerator e = DCF.RegisterUser(playerUsername, playerPassword, "Hello World"); // << Send request to register a new user, providing submitted username and password. It also provides an initial value for the data string on the account, which is "Hello World".
+        IEnumerator e = DCF.RegisterUser(playerUsername, playerPassword, "01"); // << Send request to register a new user, providing submitted username and password. It also provides an initial value for the data string on the account, which is "Hello World".
         while (e.MoveNext())
         {
             yield return e.Current;
@@ -110,8 +110,9 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
             //Username and Password were valid. Account has been created. Stop showing 'Loading...' and show the loggedIn UI and set text to display the username.
             ResetAllUIElements();
             loadingParent.gameObject.SetActive(false);
-            loggedInParent.gameObject.SetActive(true);
+            loginParent.gameObject.SetActive(true);
             LoggedIn_DisplayUsernameText.text = playerUsername;
+            Debug.Log("done");
         } else
         {
             //Something went wrong logging in. Stop showing 'Loading...' and go back to RegisterUI
@@ -167,6 +168,7 @@ public class DCF_DemoScene_ManagerScript_CSharp : MonoBehaviour {
         if (response == "Success")
         {
             //The data string was set correctly. Goes back to LoggedIn UI
+      
             loadingParent.gameObject.SetActive(false);
             loggedInParent.gameObject.SetActive(true);
         }

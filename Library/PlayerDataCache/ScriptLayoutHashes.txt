@@ -1,4 +1,4 @@
-WebGL
+Android
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/GameScene.unity
@@ -119,6 +119,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UpdateMismatches
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UpdateStage
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UpdateLevel
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Draggable
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GoNext
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UpdateExtends
@@ -157,8 +159,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Rotate
 5e8273dd736260a6d2c6e228154f594b Assembly-CSharp.dll:.GetUserLevel
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameController
+2141010b9d9a2c070937a32d931bb1b5 Assembly-CSharp.dll:.GameController
 836127cb00cd0e164122055ff9e7b78f Assembly-CSharp.dll:.AddSprites
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.nextScene
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DDOL
-2d2afbdb73600c10756134320cd4533c Assembly-CSharp.dll:.UpdateScore
+c6c6f56692295d2ee2a427c1ae24d51e Assembly-CSharp.dll:.UpdateScore

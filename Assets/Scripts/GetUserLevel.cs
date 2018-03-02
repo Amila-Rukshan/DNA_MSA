@@ -42,7 +42,7 @@ public class GetUserLevel  : MonoBehaviour {
                 
 				levelText.text = response;
                 UserData.SetLevel(int.Parse(response));
-                Debug.Log("got datasf");
+                Debug.Log("got data");
             
         }
     }
