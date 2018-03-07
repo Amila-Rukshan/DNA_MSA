@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
         BuildAncestorAndScore.level = UserData.GetLevel();
         UpdateScore.level = UserData.GetLevel();
         UpdateLevel.setLevel(UserData.GetLevel());
+        FirebaseConnection.Config();
     }
 
     public void StartBuildOfSeqs() {

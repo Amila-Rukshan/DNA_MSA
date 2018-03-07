@@ -57,11 +57,13 @@ public class BuildAncestorAndScore : MonoBehaviour
 
     public void showAnces_4()
     {
+        Debug.Log("correct");
         showAncestor(generatedSeqs["A(A(A12,3),A(4,5))"]);
     }
 
     public void L2showAnces_3()
     {
+        Debug.Log("wrong");
         showAncestor(generatedSeqs["A(A(A12,3),4)"]);
     }
     void Awake()
@@ -673,6 +675,37 @@ public class BuildAncestorAndScore : MonoBehaviour
                 }
             }
         }
+    }
+
+    public static string GetStringOfSequenceAlignment() {
+        string sequenceString = "";
+        string seq = "";
+        float StartingIndex = generatedSeqs["1"][0].transform.localPosition.x;
+        foreach (string key in generatedSeqs.Keys)
+        {
+            seq = key + ": ";
+            foreach (Image img in generatedSeqs[key])
+            {
+                if (img.color.a == 1 | img.color.a == 255) {
+                    if (img.tag.Equals("A")) {
+                        seq += "G" + Mathf.RoundToInt((img.transform.localPosition.x - StartingIndex) / 152) + " ";
+                    }
+                    else if(img.tag.Equals("B")) {
+                        seq += "T" + Mathf.RoundToInt((img.transform.localPosition.x - StartingIndex) / 152) + " ";
+                    }
+                    else if (img.tag.Equals("C")) {
+                        seq += "C" + Mathf.RoundToInt((img.transform.localPosition.x - StartingIndex) / 152) + " ";
+                    }
+                    else if (img.tag.Equals("D")) {
+                        seq += "A" + Mathf.RoundToInt((img.transform.localPosition.x - StartingIndex) / 152) + " ";
+                    }
+               }
+
+            }
+            sequenceString += seq + "\n ";
+            seq = "";
+        }
+        return sequenceString;
     }
 
 
