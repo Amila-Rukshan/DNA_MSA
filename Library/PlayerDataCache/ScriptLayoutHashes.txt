@@ -165,3 +165,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.nextScene
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DDOL
 3e633341fba359ef7c16d7aff2eebb61 Assembly-CSharp.dll:.UpdateScore
+998c570f84856acafa7bd7b04e94e163 Assembly-CSharp.dll:.GameStartScreen
+a101049d19a6583b1801443609402dd3 Assembly-CSharp.dll:.FloatingText
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FloatingTextController

@@ -14,10 +14,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	private List<Image> blocks;
 
+    private FloatingTextController ftcon;
+
+    private int preScore;
+
     //private float v;
 
     void Start() {
-   
+        ftcon = GameObject.Find("FloatingTextController").GetComponent<FloatingTextController>();
         blocks = AddSprites.blocks;
     }
 	
@@ -29,8 +33,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		for (int i = 0; i < blocks.Count; i++) {
 			InitialPositions [i] = blocks[i].transform.localPosition;
 		}
-		//Debug.Log (startPos);
-	}
+        //Debug.Log (startPos);
+        //giving current position to visualize the popup score
+        ftcon.SetParentContent(gameObject.transform.parent.gameObject);
+        ftcon.SetPositionRelativeToContent(gameObject.transform.localPosition);
+        preScore = BuildAncestorAndScore.score2;
+    }
 
 	public void OnDrag(PointerEventData eventData){
 
@@ -55,7 +63,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	public void OnEndDrag(PointerEventData eventData){
 
-
+       
         //int jumpUnits = Mathf.RoundToInt(this.transform.localPosition.x-startPos.x)/202;
         //this.transform.localPosition = new Vector3 (startPos.x+102*jumpUnits, startPos.y, 0);
         for (int i = 0; i < blocks.Count; i++)
@@ -75,7 +83,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         
         BuildAncestorAndScore.buildAncestor();
 
+        int goodnessOfMovement = BuildAncestorAndScore.score2 - preScore;
+        if (goodnessOfMovement > 0 ) {
+            ftcon.GetComponent<FloatingTextController>().CreateFloatingText("+"+ goodnessOfMovement, goodnessOfMovement);
+        } else if(goodnessOfMovement < 0)
+        {
+            ftcon.GetComponent<FloatingTextController>().CreateFloatingText(goodnessOfMovement.ToString(), goodnessOfMovement);
         }
+        
+
+    }
 
         IEnumerator Wait()
         {
