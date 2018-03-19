@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50437551592553768}
   - component: {fileID: 114412076575019300}
   m_Layer: 5
-  m_Name: BlockL2
+  m_Name: BlockTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
